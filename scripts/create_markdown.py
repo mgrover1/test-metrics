@@ -10,7 +10,7 @@ from bokeh.plotting import figure, reset_output
 import pandas as pd
 import requests
 
-from utilities.target_repos import TargetRepos
+from utils.target_repos import TargetRepos
 
 ROOT_DIR = Path(__file__).parent.parent
 INTERNAL_AUTHORS = set(['rcjackson', 'rcjackson', 'rcjackson', 'scollis', 'mgrover1', 'jhemedin', 'AdamTheisen'])
@@ -84,7 +84,7 @@ def get_downloads_data() -> pd.DataFrame:
     for pkg in pkgs:
         df = pd.DataFrame()
         df.index = pd.period_range(
-            start='2019-01',
+            start='2013-01',
             periods=0,
             freq='M',
             name='month',
@@ -216,15 +216,15 @@ def make_burndown_images(df_i: pd.DataFrame):
 
 def make_packages_markdown():
     packages_md = """# Package Metrics
-Below are some of the metrics related to activity on repositories that Xdev owns
-and package downloads for repositories that are published packaged on PyPI or
-Conda Forge.  These metrics are updated periodically, so check back later for
-new information.  (*Note that Conda download statistics can be months out of
-date, so it is likely that download numbers for the current and last months will
-be inaccurate.*)
+Below are some of the metrics related to activity on repositories that are
+defined in the yml file and package downloads for repositories that are 
+published packaged on PyPI or Conda Forge.  These metrics are updated periodically,
+so check back later for new information.  (*Note that Conda download statistics can 
+be months out of date, so it is likely that download numbers for the current and
+last months will be inaccurate.*)
 """
 
-    repos = XdevRepos()
+    repos = TargetRepos()
     repo_data = get_repo_data()
     packages = repo_data.package.to_list()
 
