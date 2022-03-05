@@ -40,15 +40,15 @@ jobs:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       - name: Update package download data
-        run: ./cli/get_downloads.py
+        run: ./scripts/get_downloads.py
 
       - name: Update GitHub statistics
-        run: ./cli/get_github_stats.py
+        run: ./scripts/get_github_stats.py
         env:
           GITHUB_TOKEN: '${{ secrets.GRAPHQL_TOKEN }}'
 
       - name: Update Packages metrics page
-        run: ./cli/create_markdown.py
+        run: ./scripts/create_markdown.py
 
       - name: Commit new changes
         uses: EndBug/add-and-commit@v8
