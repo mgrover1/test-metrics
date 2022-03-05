@@ -69,7 +69,7 @@ def validate_source(ctx, param, value):
     help='Download all data, not just recent data',
 )
 def main(sources, last, all):
-    repos = XdevRepos()
+    repos = TargetRepos()
 
     for source in sources:
         packages = repos.packages(source=source)
