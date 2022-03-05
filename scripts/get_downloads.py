@@ -6,8 +6,8 @@ import click
 from dateutil.relativedelta import relativedelta
 import pandas as pd
 
-from utilities import download_stats
-from utilities.target_repos import TargetRepos
+from utils import download_stats
+from utils.target_repos import TargetRepos
 
 
 def update_dataframe(df1, df2):

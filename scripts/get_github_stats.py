@@ -2,8 +2,8 @@
 import click
 import pandas as pd
 
-from utilities.xdev_repos import XdevRepos
-from utilities import github_queries as gq
+from utils.target_repos import TargetRepos
+from utils import github_queries as gq
 
 
 @click.command()
@@ -13,7 +13,7 @@ from utilities import github_queries as gq
     help='GitHub personal access token for GraphQL access',
 )
 def main(token):
-    repos = XdevRepos()
+    repos = TargetRepos()
 
     print('Downloading general repository information from GitHub...')
     repos_df = gq.get_all_repos_info(repos=repos, token=token)
