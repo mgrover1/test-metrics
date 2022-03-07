@@ -1,0 +1,15 @@
+name: gh-stats
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - dask
+  - google-cloud-bigquery
+  - jupyter-book
+  - pip
+  - python>=3.8
+  - s3fs
+  - pip:
+      - python-dateutil
+      - sphinx-pythia-theme
+  - python=3.9
