@@ -3,4 +3,4 @@ root: index
 parts:
 - caption: Stats
   chapters:
-  - file: stats/projects
+  - file: stats/packages
