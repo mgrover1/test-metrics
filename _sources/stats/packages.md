@@ -9,7 +9,7 @@ last months will be inaccurate.*)
 ## pyart
 > Adaptive Radix Tree (ART) implemetation for python.
 The `pyart` [repository](https://github.com/ARM-DOE/pyart) has **55 Watchers** and **364 Stargazers**.
-Currently, there have been **1296 downloads** so far in 2022.
+Currently, there have been **1337 downloads** so far in 2022.
 The most recent release is tagged at **v1.11.6**.
 :::{raw} html
 ---
