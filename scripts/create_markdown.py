@@ -13,7 +13,7 @@ import requests
 from utils.target_repos import TargetRepos
 
 ROOT_DIR = Path(__file__).parent.parent
-INTERNAL_AUTHORS = set(['rcjackson', 'rcjackson', 'rcjackson', 'scollis', 'mgrover1', 'jhemedin', 'AdamTheisen'])
+INTERNAL_AUTHORS = set(['zssherman', 'rcjackson', 'scollis', 'mgrover1', 'jhemedin', 'AdamTheisen'])
 
 
 def _make_stacked_bar_plot(

@@ -1,7 +1,7 @@
 PyART:
   github: ARM-DOE/pyart
   pypi: arm-pyart
-  conda: arm-pyart
+  conda: arm_pyart
 ACT:
   github: ARM-DOE/ACT
   pypi: act-atmos
