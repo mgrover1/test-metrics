@@ -1,2 +1,2 @@
-pyart: ARM-DOE/pyart
-ACT: ARM-DOE/ACT
+arm_pyart: ARM-DOE/pyart
+act-atmos: ARM-DOE/ACT
