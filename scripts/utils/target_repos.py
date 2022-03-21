@@ -28,8 +28,9 @@ class TargetRepos:
             gh_repo = None
             if isinstance(_repos[repo], str):
                 gh_org, gh_repo = self._parse_github_string(_repos[repo])
-                pypi_pkg = gh_repo
-                conda_pkg = gh_repo
+                # Use the key - repo - for the pypi and conda package name
+                pypi_pkg = repo
+                conda_pkg = repo
             elif isinstance(_repos[repo], dict):
                 if 'github' in _repos[repo]:
                     gh = _repos[repo]['github']
