@@ -104,7 +104,7 @@ def main(sources, last, all):
                 year, month = dt.year, dt.month
 
                 print(f'  Updating month {year:04d}-{month:02d}')
-                df_ = method(packages=packages, year=year, month=month)
+                df_ = method(packages=packages, year=year)
                 update_dataframe(df, df_)
 
         df.to_csv(statsfile)
