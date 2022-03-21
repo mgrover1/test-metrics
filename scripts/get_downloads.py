@@ -100,12 +100,13 @@ def main(sources, last, all):
             print(f'Updating {source} statistics for last {last} years...')
             now = datetime.now()
             for i in range(last-1, -1, -1):
-                dt = now - relativedelta(years=i)
-                year, month = dt.year, dt.month
+                for month in range(1, 13):
+                    dt = now - relativedelta(years=i)
+                    year, month = dt.year, month
 
-                print(f'  Updating month {year:04d}-{month:02d}')
-                df_ = method(packages=packages, year=year)
-                update_dataframe(df, df_)
+                    print(f'  Updating month {year:04d}-{month:02d}')
+                    df_ = method(packages=packages, year=year, month=month)
+                    update_dataframe(df, df_)
 
         df.to_csv(statsfile)
         print('Done.')
