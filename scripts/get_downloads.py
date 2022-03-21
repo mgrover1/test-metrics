@@ -59,12 +59,12 @@ def validate_source(ctx, param, value):
     '--last',
     type=click.IntRange(1, 12, clamp=True),
     default=3,
-    help='Download data for the last n months',
+    help='Download data for the last n years',
 )
 @click.option(
     '-a',
     '--all',
-    default=True,
+    default=False,
     is_flag=True,
     help='Download all data, not just recent data',
 )
@@ -97,10 +97,10 @@ def main(sources, last, all):
             update_dataframe(df, df_)
 
         else:
-            print(f'Updating {source} statistics for last {last} months...')
+            print(f'Updating {source} statistics for last {last} years...')
             now = datetime.now()
             for i in range(last-1, -1, -1):
-                dt = now - relativedelta(months=i)
+                dt = now - relativedelta(years=i)
                 year, month = dt.year, dt.month
 
                 print(f'  Updating month {year:04d}-{month:02d}')
