@@ -1,2 +1,8 @@
-PyART: ARM-DOE/pyart
-ACT: ARM-DOE/ACT
+PyART:
+  github: ARM-DOE/pyart
+  pypi: arm_pyart
+  conda: arm_pyart
+ACT:
+  github: ARM-DOE/ACT
+  pypi: act-atmos
+  conda: act-atmos
