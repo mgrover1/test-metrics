@@ -85,7 +85,7 @@ def main(sources, last, all):
             print(f'Initializing {source} statistics...')
             df = pd.DataFrame()
             df.index = pd.period_range(
-                start='2019-01',
+                start='2013-01',
                 periods=0,
                 freq='M',
                 name='month',
