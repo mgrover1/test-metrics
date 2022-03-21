@@ -64,7 +64,7 @@ def validate_source(ctx, param, value):
 @click.option(
     '-a',
     '--all',
-    default=False,
+    default=True,
     is_flag=True,
     help='Download all data, not just recent data',
 )
