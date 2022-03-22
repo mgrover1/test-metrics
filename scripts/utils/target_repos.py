@@ -26,6 +26,7 @@ class TargetRepos:
         for repo in _repos:
             gh_org = None
             gh_repo = None
+            self._rename_dict = {}
             if isinstance(_repos[repo], str):
                 gh_org, gh_repo = self._parse_github_string(_repos[repo])
                 # Use the key - repo - for the pypi and conda package name
@@ -41,6 +42,9 @@ class TargetRepos:
                         gh_repo = gh.get('repo', None)
                 pypi_pkg = _repos[repo]['pypi'] if 'pypi' in _repos[repo] else gh_repo
                 conda_pkg = _repos[repo]['conda'] if 'conda' in _repos[repo] else gh_repo
+                
+                self._rename_dict.update({pypi_pkg:gh_repo})
+                self._rename_dict.update({conda_pkg:gh_repo})
 
             self._repos[repo] = dict(org=gh_org, repo=gh_repo, pypi=pypi_pkg, conda=conda_pkg)
 
