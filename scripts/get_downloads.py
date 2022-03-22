@@ -107,7 +107,8 @@ def main(sources, last, all):
                     print(f'  Updating month {year:04d}-{month:02d}')
                     df_ = method(packages=packages, year=year, month=month)
                     update_dataframe(df, df_)
-
+        # Rename packages that have pypi/conda pkgs that differ from their name on github
+        df = df.rename(columns=repos._rename_dict)
         df.to_csv(statsfile)
         print('Done.')
 
