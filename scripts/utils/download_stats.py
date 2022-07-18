@@ -21,7 +21,7 @@ def get_conda_stats(packages=[], year=None, month=None):
     if month is None:
         month = '*'
 
-    s3uri = f's3://anaconda-package-data/conda/hourly/{year}/{month}/*-*-*.parquet'
+    s3uri = f's3://anaconda-package-data/conda/hourly/{year:04d}/{month:02d}/*-*-*.parquet'
     df = dd.read_parquet(
         s3uri,
         storage_options={'anon': True},
