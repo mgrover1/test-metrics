@@ -27,7 +27,7 @@ jobs:
           auto-update-conda: false
           python-version: 3.9
           environment-file: environment.yml
-          mamba-version: '*'
+          miniforge-variant: Mambaforge
           use-mamba: true
 
       - name: Verify environment installation
