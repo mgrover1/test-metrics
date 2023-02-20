@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Package Stats</title>
+    <title>Plot the Download and Contributor Statistics &#8212; Package Stats</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -189,7 +189,51 @@ const thebe_selector_output = ".output, .cell_output"
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-stats-for-py-art">
+   Download Stats for Py-ART
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conda">
+     Conda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleanup-the-data">
+     Cleanup the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pypi">
+     PyPi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-results">
+     Visualize the Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#commit-history">
+   Commit History
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-data">
+     Visualize the Data
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -200,7 +244,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Plot the Download and Contributor Statistics</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -209,7 +253,51 @@ const thebe_selector_output = ".output, .cell_output"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-stats-for-py-art">
+   Download Stats for Py-ART
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conda">
+     Conda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleanup-the-data">
+     Cleanup the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pypi">
+     PyPi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-results">
+     Visualize the Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#commit-history">
+   Commit History
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-data">
+     Visualize the Data
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -219,7 +307,11 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="cell docutils container">
+  <div class="tex2jax_ignore mathjax_ignore section" id="plot-the-download-and-contributor-statistics">
+<h1>Plot the Download and Contributor Statistics<a class="headerlink" href="#plot-the-download-and-contributor-statistics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">condastats.cli</span> <span class="kn">import</span> <span class="n">overall</span><span class="p">,</span> <span class="n">pkg_platform</span><span class="p">,</span> <span class="n">pkg_version</span><span class="p">,</span> <span class="n">pkg_python</span><span class="p">,</span> <span class="n">data_source</span>
 <span class="kn">import</span> <span class="nn">s3fs</span>
@@ -229,28 +321,35 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="download-stats-for-py-art">
+<h2>Download Stats for Py-ART<a class="headerlink" href="#download-stats-for-py-art" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">overall</span><span class="p">(</span><span class="s1">&#39;arm_pyart&#39;</span><span class="p">,</span> <span class="n">start_month</span><span class="o">=</span><span class="s1">&#39;2019-01&#39;</span><span class="p">,</span> <span class="n">end_month</span><span class="o">=</span><span class="s1">&#39;2022-06&#39;</span><span class="p">,</span> <span class="n">monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">overall</span><span class="p">(</span><span class="s1">&#39;arm_pyart&#39;</span><span class="p">,</span>
+             <span class="n">start_month</span><span class="o">=</span><span class="s1">&#39;2019-01&#39;</span><span class="p">,</span>
+             <span class="n">end_month</span><span class="o">=</span><span class="s1">&#39;2023-01&#39;</span><span class="p">,</span>
+             <span class="n">monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;arm_pyart&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="cleanup-the-data">
+<h3>Cleanup the Data<a class="headerlink" href="#cleanup-the-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">conda_downloads</span> <span class="o">=</span> <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda_downloads</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span>
-</pre></div>
 </div>
-</div>
-</div>
+<div class="section" id="pypi">
+<h3>PyPi<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pypi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/pypi_stats.csv&quot;</span><span class="p">,</span>
@@ -267,36 +366,51 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="visualize-the-results">
+<h3>Visualize the Results<a class="headerlink" href="#visualize-the-results" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">pypi_downloads</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pypi downloads&#39;</span><span class="p">)</span>
-<span class="n">conda_downloads</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;conda downloads&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pypi_downloads</span> <span class="o">+</span> <span class="n">conda_downloads</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Downloads&#39;</span><span class="p">)</span>
+<span class="c1">#conda_downloads.plot(linewidth=3, label=&#39;conda downloads&#39;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Downloads&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Py-ART Monthly Download Statistics </span><span class="se">\n</span><span class="s2"> (2019 - 2022)&quot;</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Py-ART Monthly Download Statistics </span><span class="se">\n</span><span class="s2"> (2020 - 2023)&quot;</span><span class="p">,</span>
           <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;monthly_download_stats_through_june_2022.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;monthly_download_stats_through_january_2023.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/download-statistics_6_0.png" src="../_images/download-statistics_6_0.png" />
+<img alt="../_images/download-statistics_11_0.png" src="../_images/download-statistics_11_0.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="commit-history">
+<h2>Commit History<a class="headerlink" href="#commit-history" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/github_commits.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/github_commits.csv&quot;</span><span class="p">,</span>
+                 <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span>
+                 <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">INTERNAL_AUTHORS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;zssherman&#39;</span><span class="p">,</span> <span class="s1">&#39;rcjackson&#39;</span><span class="p">,</span> <span class="s1">&#39;scollis&#39;</span><span class="p">,</span> <span class="s1">&#39;mgrover1&#39;</span><span class="p">,</span> <span class="s1">&#39;jhemedin&#39;</span><span class="p">,</span> <span class="s1">&#39;AdamTheisen&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">INTERNAL_AUTHORS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;zssherman&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;rcjackson&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;scollis&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;mgrover1&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;jhemedin&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;AdamTheisen&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;jrobrien91&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">get_commits_data</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">author_type</span><span class="p">(</span><span class="n">author</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">INTERNAL_AUTHORS</span><span class="p">:</span>
@@ -333,7 +447,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">package</span> <span class="o">==</span> <span class="s1">&#39;pyart&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -356,13 +478,15 @@ const thebe_selector_output = ".output, .cell_output"
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th></th>
       <th>package</th>
-      <th>author</th>
       <th>changes</th>
       <th>author_type</th>
+      <th>date</th>
     </tr>
     <tr>
       <th>date</th>
+      <th>author</th>
       <th></th>
       <th></th>
       <th></th>
@@ -371,39 +495,702 @@ const thebe_selector_output = ".output, .cell_output"
   </thead>
   <tbody>
     <tr>
-      <th>2012-09-07 17:46:26</th>
-      <td>pyart</td>
-      <td>NaN</td>
-      <td>156</td>
-      <td>External</td>
+      <th>2012</th>
+      <th>scollis</th>
+      <td>124</td>
+      <td>124</td>
+      <td>124</td>
+      <td>124</td>
     </tr>
     <tr>
-      <th>2012-09-11 17:17:13</th>
-      <td>pyart</td>
-      <td>NaN</td>
-      <td>42</td>
-      <td>External</td>
+      <th rowspan="6" valign="top">2013</th>
+      <th>jjhelmus</th>
+      <td>353</td>
+      <td>353</td>
+      <td>353</td>
+      <td>353</td>
     </tr>
     <tr>
-      <th>2012-09-11 17:21:57</th>
-      <td>pyart</td>
-      <td>NaN</td>
+      <th>josephhardinee</th>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>kirknorth</th>
       <td>1</td>
-      <td>External</td>
-    </tr>
-    <tr>
-      <th>2012-09-11 17:26:50</th>
-      <td>pyart</td>
-      <td>NaN</td>
       <td>1</td>
-      <td>External</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>2012-09-11 17:30:12</th>
-      <td>pyart</td>
-      <td>NaN</td>
-      <td>2406</td>
-      <td>External</td>
+      <th>kmuehlbauer</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>87</td>
+      <td>87</td>
+      <td>87</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>vanandel</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">2014</th>
+      <th>codypiersall</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>jjhelmus</th>
+      <td>186</td>
+      <td>186</td>
+      <td>186</td>
+      <td>186</td>
+    </tr>
+    <tr>
+      <th>josephhardinee</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>kirknorth</th>
+      <td>22</td>
+      <td>22</td>
+      <td>22</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th rowspan="10" valign="top">2015</th>
+      <th>WeatherGod</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>deeplycloudy</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>gamaanderson</th>
+      <td>38</td>
+      <td>38</td>
+      <td>38</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>jjhelmus</th>
+      <td>576</td>
+      <td>576</td>
+      <td>576</td>
+      <td>576</td>
+    </tr>
+    <tr>
+      <th>josephhardinee</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>kirknorth</th>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>nguy</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>swnesbitt</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>tjlang</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="11" valign="top">2016</th>
+      <th>TulipaSilva</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>jjhelmus</th>
+      <td>315</td>
+      <td>315</td>
+      <td>315</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <th>jsignell</th>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>kirknorth</th>
+      <td>19</td>
+      <td>19</td>
+      <td>19</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>kmuehlbauer</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>mrugna</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>nguy</th>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>normbw</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>swnesbitt</th>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>tjlang</th>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">2017</th>
+      <th>freemansw1</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>jjhelmus</th>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>rcjackson</th>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>swnesbitt</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>tjlang</th>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>vlouf</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th rowspan="17" valign="top">2018</th>
+      <th>Striges</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>csnardi</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>es5nhc</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gamaanderson</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>jhemedin</th>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>juhi24</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>kmuehlbauer</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>mhpicel</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>nguy</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>rcjackson</th>
+      <td>23</td>
+      <td>23</td>
+      <td>23</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>rtanamachi</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>76</td>
+      <td>76</td>
+      <td>76</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>tjlang</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>vlouf</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>wave100</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>101</td>
+      <td>101</td>
+      <td>101</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <th>zxdawn</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="9" valign="top">2019</th>
+      <th>AdamTheisen</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>dstex</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>jhemedin</th>
+      <td>16</td>
+      <td>16</td>
+      <td>16</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>meteoswiss-mdr</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>nguy</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>rcjackson</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>22</td>
+      <td>22</td>
+      <td>22</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>tjlang</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>92</td>
+      <td>92</td>
+      <td>92</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">2020</th>
+      <th>AdamTheisen</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>dcedgren</th>
+      <td>14</td>
+      <td>14</td>
+      <td>14</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>rcjackson</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>rtanamachi</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>scollis</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>vlouf</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>zflamig</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>129</td>
+      <td>129</td>
+      <td>129</td>
+      <td>129</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">2021</th>
+      <th>HumphreysCarter</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Quba1</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>lauratomkins</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ritvje</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>59</td>
+      <td>59</td>
+      <td>59</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th rowspan="14" valign="top">2022</th>
+      <th>dopplerchase</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>jfigui</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>jrobrien91</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>jthielen</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>kmuehlbauer</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>lauratomkins</th>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>mgrover1</th>
+      <td>143</td>
+      <td>143</td>
+      <td>143</td>
+      <td>143</td>
+    </tr>
+    <tr>
+      <th>nguy</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>rcjackson</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>rtanamachi</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>wolfidan</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>wx4stg</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>zouihao</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>76</td>
+      <td>76</td>
+      <td>76</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">2023</th>
+      <th>jrobrien91</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>mgrover1</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>neutrinoceros</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>zssherman</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -411,13 +1198,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_contributor_images</span><span class="p">(</span><span class="n">df_c</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">cumsum_unique_authors</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cumsum_unique_authors</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span>
 
-<span class="n">df_c</span> <span class="o">=</span> <span class="n">df_c</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;changes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span>
+<span class="k">def</span> <span class="nf">make_contributor_images</span><span class="p">(</span><span class="n">df_c</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+
+    <span class="n">df_c</span> <span class="o">=</span> <span class="n">df_c</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;changes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df_c</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="n">df_c</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span>
     <span class="n">df_c</span><span class="o">.</span><span class="n">package</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
     <span class="n">df_c</span><span class="o">.</span><span class="n">author_type</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
@@ -443,30 +1231,50 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [46],</span> in <span class="ni">&lt;cell line: 20&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;images/metrics/</span><span class="si">{</span><span class="n">pkg</span><span class="si">}</span><span class="s1">-contributors.html&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Number of Contributors&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">28</span> <span class="n">_make_stacked_bar_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;Contributors&#39;</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/bw/c9j8z20x45s2y20vv6528qjc0000gq/T/ipykernel_11999/4001969942.py:19: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
+To preserve the previous behavior, use
 
-<span class="ne">NameError</span>: name &#39;_make_stacked_bar_plot&#39; is not defined
+	&gt;&gt;&gt; .groupby(..., group_keys=False)
+
+To adopt the future behavior and silence this warning, use 
+
+	&gt;&gt;&gt; .groupby(..., group_keys=True)
+  .apply(cumsum_unique_authors)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="section" id="visualize-the-data">
+<h3>Visualize the Data<a class="headerlink" href="#visualize-the-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Internal</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">External</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Internal</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">External</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                      <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Contributors&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">External</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                      <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Non-funded Contribtuors&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Internal</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                      <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ARM/DOE-funded Contributors&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Contributors&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Py-ART Monthly Contributor Statistics </span><span class="se">\n</span><span class="s2"> (2013 - 2023)&quot;</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;monthly_contributor_stats_through_january_2023.png&quot;</span><span class="p">,</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;month&#39;&gt;
-</pre></div>
+<img alt="../_images/download-statistics_21_0.png" src="../_images/download-statistics_21_0.png" />
 </div>
-<img alt="../_images/download-statistics_13_1.png" src="../_images/download-statistics_13_1.png" />
+</div>
+</div>
 </div>
 </div>
 
