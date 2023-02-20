@@ -3,9 +3,11 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - condastats
   - dask
   - google-cloud-bigquery
   - jupyter-book
+  - jupyterlab
   - pip
   - python>=3.8
   - s3fs
