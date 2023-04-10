@@ -312,8 +312,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">overall</span><span class="p">(</span><span class="s1">&#39;arm_pyart&#39;</span><span class="p">,</span>
-             <span class="n">start_month</span><span class="o">=</span><span class="s1">&#39;2019-01&#39;</span><span class="p">,</span>
-             <span class="n">end_month</span><span class="o">=</span><span class="s1">&#39;2023-01&#39;</span><span class="p">,</span>
+             <span class="n">start_month</span><span class="o">=</span><span class="s1">&#39;2020-01&#39;</span><span class="p">,</span>
+             <span class="n">end_month</span><span class="o">=</span><span class="s1">&#39;2023-02&#39;</span><span class="p">,</span>
              <span class="n">monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;arm_pyart&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -364,12 +364,12 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Downloads&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Py-ART Monthly Download Statistics </span><span class="se">\n</span><span class="s2"> (2020 - 2023)&quot;</span><span class="p">,</span>
           <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;monthly_download_stats_through_january_2023.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;monthly_download_stats_through_february_2023.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1765008b6fc41678d3abce298afa1eec800fa343f1413de870512f601e2d2caf.png" src="../_images/1765008b6fc41678d3abce298afa1eec800fa343f1413de870512f601e2d2caf.png" />
+<img alt="../_images/c6f9d1edb07641de4715a67e1af75e4777622b76259ea957bb3e3bcd09467d46.png" src="../_images/c6f9d1edb07641de4715a67e1af75e4777622b76259ea957bb3e3bcd09467d46.png" />
 </div>
 </div>
 </div>
@@ -417,6 +417,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_commits_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1181,6 +1188,24 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df_c</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="n">df_c</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span>
+        <span class="n">df_c</span><span class="o">.</span><span class="n">package</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
+        <span class="n">df_c</span><span class="o">.</span><span class="n">author_type</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
+    <span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;package&#39;</span><span class="p">,</span> <span class="s1">&#39;author_type&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="mi">353</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cumsum_unique_authors</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;authors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span>
@@ -1214,7 +1239,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/bw/c9j8z20x45s2y20vv6528qjc0000gq/T/ipykernel_11999/4001969942.py:19: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/bw/c9j8z20x45s2y20vv6528qjc0000gq/T/ipykernel_12775/4001969942.py:19: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
 To preserve the previous behavior, use
 
 	&gt;&gt;&gt; .groupby(..., group_keys=False)
@@ -1223,6 +1248,13 @@ To adopt the future behavior and silence this warning, use
 
 	&gt;&gt;&gt; .groupby(..., group_keys=True)
   .apply(cumsum_unique_authors)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">88</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1286,7 @@ To adopt the future behavior and silence this warning, use
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e27cea4c7ca67ee3e0542926d247ed6ea5fd520496da35c9a46712049e1338dd.png" src="../_images/e27cea4c7ca67ee3e0542926d247ed6ea5fd520496da35c9a46712049e1338dd.png" />
+<img alt="../_images/60c3389552146da7e421ed8105e4448366dda8af84bb1e258b210deb2695b8c4.png" src="../_images/60c3389552146da7e421ed8105e4448366dda8af84bb1e258b210deb2695b8c4.png" />
 </div>
 </div>
 </div>
