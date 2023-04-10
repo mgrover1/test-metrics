@@ -9,6 +9,7 @@ dependencies:
   - jupyter-book
   - jupyterlab
   - pip
+  - pandas<2.0
   - python>=3.8
   - s3fs
   - pip:
