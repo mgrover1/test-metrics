@@ -34,7 +34,7 @@ file: ../images/metrics/pyart-burndown.html
 
 ## ACT
 > 
-The `ACT` [repository](https://github.com/ARM-DOE/ACT) has **13 Watchers** and **110 Stargazers**.
+The `ACT` [repository](https://github.com/ARM-DOE/ACT) has **13 Watchers** and **111 Stargazers**.
 
 The most recent release is tagged at **v1.5.0**.
 :::{raw} html
