@@ -8,9 +8,9 @@ last months will be inaccurate.*)
 
 ## PyART
 > Adaptive Radix Tree (ART) implemetation for python.
-The `PyART` [repository](https://github.com/ARM-DOE/pyart) has **63 Watchers** and **520 Stargazers**.
+The `PyART` [repository](https://github.com/ARM-DOE/pyart) has **63 Watchers** and **523 Stargazers**.
 
-The most recent release is tagged at **v1.19.3**.
+The most recent release is tagged at **v1.19.4**.
 :::{raw} html
 ---
 file: ../images/metrics/pyart-downloads.html
@@ -34,7 +34,7 @@ file: ../images/metrics/pyart-burndown.html
 
 ## ACT
 > 
-The `ACT` [repository](https://github.com/ARM-DOE/ACT) has **13 Watchers** and **152 Stargazers**.
+The `ACT` [repository](https://github.com/ARM-DOE/ACT) has **13 Watchers** and **153 Stargazers**.
 
 The most recent release is tagged at **v2.1.6**.
 :::{raw} html
